@@ -1,6 +1,9 @@
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.devtools.v85.log.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -10,12 +13,10 @@ import static com.codeborne.selenide.Selenide.*;
 import static java.time.Duration.*;
 
 
-public class LoginTest {
+public class LoginTest extends BaseTest{
 
-    @BeforeEach
-    public void setUo(){
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-    }
+
+
 
     @Test
     public void successLogin()  {
@@ -69,7 +70,14 @@ public class LoginTest {
 
     @Test
     public void forgotPasswordTestWithPO() {
-
+        LoginPage loginPage = new LoginPage();
+        loginPage.clickOnForgotYourPasswordLink();
+        ResetPasswordPage resetPasswordPage = new ResetPasswordPage();
+        resetPasswordPage.usernameInputFieldIsDisplayed();
+        //Header with text "Reset Password" is displayed
+        resetPasswordPage.resetPasswordMessage("Reset Password");
+        //Reset password button is displayed
+        resetPasswordPage.resetPasswordButtonIsDisplayed();
     }
 
 
@@ -87,6 +95,47 @@ public class LoginTest {
         $(".orangehrm-login-title").shouldBe(visible, ofSeconds(10)).shouldHave(text("Login"));
     }
 
+    @Test
+    public void logoutTestWithPO(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.enterUsername("Admin");
+        loginPage.enterPassword("admin123");
+        loginPage.clickOnLoginButton();
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.clickOnDropdownMenu();
+        dashboardPage.clickOnLogout();
+        loginPage.loginTitleText("Login");
+    }
 
+    @Test
+    public void allLinksAreDisplayed(){
+        LoginPage loginPage = new LoginPage();
+        //LinkedIn
+        loginPage.linkLinkedinIsDisplayed();
+        //Facebook
+        loginPage.linkFacebookIsDisplayed();
+        //X (Twitter)
+        loginPage.linkTwitterIsDisplayed();
+        //Youtube
+        loginPage.linkYoutubeIsDisplayed();
+    }
+
+    @Test
+    public void linkedInLinkISCorrect() {
+        LoginPage loginPage = new LoginPage();
+        //Follow the LinkedIn link
+        loginPage.clickLinkLinkedin();
+        //Check that "LinkedIn" text contains on the page
+        LinkedInPage linkedInPage = new LinkedInPage();
+        switchTo().window(1);
+        linkedInPage.textHeaderIsDisplayed("LinkedIn");
+    }
+
+    @Test
+    public void logoIsDisplayed(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.logoIsDisplayed();
+        loginPage.logoIsCorrect();
+    }
 
 }
