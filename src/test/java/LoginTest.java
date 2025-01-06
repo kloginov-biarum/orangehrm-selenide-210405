@@ -68,6 +68,12 @@ public class LoginTest {
     }
 
     @Test
+    public void forgotPasswordTestWithPO() {
+
+    }
+
+
+    @Test
     public void logoutTest(){
         //Login with valid credentials
         $("[name=\"username\"]").setValue("Admin");
