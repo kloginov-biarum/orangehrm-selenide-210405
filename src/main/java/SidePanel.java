@@ -13,6 +13,8 @@ public class SidePanel {
 
     private SelenideElement leaveLink = $("[href=\"/web/index.php/leave/viewLeaveModule\"]");
 
+    private SelenideElement maintenanceLink = $("[href=\"/web/index.php/maintenance/viewMaintenanceModule\"]");
+
     public void clickOnTheLeaveLink(){
         leaveLink.click();
     }
@@ -26,4 +28,7 @@ public class SidePanel {
                 "Claim", "Buzz"));
     }
 
+    public void clickMaintenance (){
+        maintenanceLink.click();
+    }
 }

@@ -13,4 +13,5 @@ public class BaseTest {
     LoginPage loginPage =  new LoginPage();
     SidePanel sidePanel = new SidePanel();
     LeavePage leavePage = new LeavePage();
+    MaintenancePage maintenancePage = new MaintenancePage();
 }

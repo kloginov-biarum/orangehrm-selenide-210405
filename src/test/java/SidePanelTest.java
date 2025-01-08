@@ -30,10 +30,16 @@ public class SidePanelTest extends BaseTest{
     @Test
     public void maintenanceLinkTestValidCred(){
         //Login
+        loginPage.successLogin("Admin", "admin123");
         //Click on the "Maintenance" link on the side panel
+        sidePanel.clickMaintenance();
         //Enter password "admin123"
+        maintenancePage.inputAdminPassword("admin123");
         //Click on the "Confirm" button
+        maintenancePage.clickConfirmButton();
         //Check that we are on the page "Maintenance"
+        maintenancePage.headerMaintanceText("Maintenance\n" +
+                "Purge Records");
     }
 
 
