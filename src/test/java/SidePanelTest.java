@@ -27,5 +27,15 @@ public class SidePanelTest extends BaseTest{
         leavePage.headerHasTextLeave();
     }
 
+    @Test
+    public void maintenanceLinkTestValidCred(){
+        //Login
+        //Click on the "Maintenance" link on the side panel
+        //Enter password "admin123"
+        //Click on the "Confirm" button
+        //Check that we are on the page "Maintenance"
+    }
+
+
 
 }
