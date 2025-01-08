@@ -112,6 +112,45 @@ public class SidePanelTest extends BaseTest{
         sidePanel.eachLinkHasText(searchValue);
     }
 
+    @Test
+    public void searchInvalidText(){
+        String searchValue = "sfdseef";
+        loginPage.successLogin("Admin", "admin123");
+        sidePanel.enterSearchValue(searchValue);
+        sidePanel.amountOfLinksEquals(0);
+    }
+
+
+
+
+    @Test
+    public void rollOutTest(){
+        //AUTH
+        loginPage.successLogin("Admin", "admin123");
+        //Click on the arrow button of the side panel
+        sidePanel.clickOnTheArrow();
+        //Check that side panel is rolled out
+        sidePanel.panelIsRolledOut();
+        //All icons are displayed
+        sidePanel.allLinksIconsAreDisplayed();
+        //List of icons has 12 item
+        sidePanel.amountOfLinksIconsEquals(12);
+        //Names of links are not displayed
+        sidePanel.linksNamesAreNotDisplayed();
+    }
+
+    @Test
+    public void rollInTest(){
+        //Roll out the side panel
+        //Roll in the side panel
+        //Check that panel is rolled in
+        loginPage.successLogin("Admin", "admin123");
+        sidePanel.clickOnTheArrow();
+        sidePanel.panelIsRolledOut();
+        sidePanel.clickOnTheArrow();
+        sidePanel.panelIsRolledIn();
+
+    }
 
 
 }
