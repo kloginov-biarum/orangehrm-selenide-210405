@@ -1,4 +1,5 @@
 import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -35,6 +36,12 @@ public class SidePanel {
     }
     public void enterSearchValue(String value){
         searchField.setValue(value);
+    }
+
+    public void eachLinkHasText(String substring){
+        for (SelenideElement link: links){
+            link.shouldHave(Condition.partialText(substring));
+        }
     }
 
 

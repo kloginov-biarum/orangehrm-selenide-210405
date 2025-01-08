@@ -88,6 +88,30 @@ public class SidePanelTest extends BaseTest{
         sidePanel.linksTextsAreCorrect(expectedLinks);
     }
 
+    @Test
+    public void searchPartValue(){
+        String searchValue = "re";
+        loginPage.successLogin("Admin", "admin123");
+        //Enter "re" to the search input field
+        sidePanel.enterSearchValue(searchValue);
+        //Check that 2 links are displayed
+        sidePanel.amountOfLinksEquals(2);
+        //Check that each of the links contains "re"
+        sidePanel.eachLinkHasText(searchValue);
+    }
+
+    @Test
+    public void searchCaseInsensitive(){
+        //Enter "pim"
+        //Check that link PIM is displayed
+        String searchValue = "pim";
+        loginPage.successLogin("Admin", "admin123");
+        //Enter "re" to the search input field
+        sidePanel.enterSearchValue(searchValue);
+        sidePanel.amountOfLinksEquals(1);
+        sidePanel.eachLinkHasText(searchValue);
+    }
+
 
 
 }
