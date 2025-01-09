@@ -17,7 +17,7 @@ public class ResetPasswordPage {
     private SelenideElement resetPasswordButton = $(".oxd-button:nth-child(2)");
 
     public void resetPasswordMessage(String resetPasswordValue) {
-        resetPasswordHeader.shouldHave(Condition.text(resetPasswordValue));
+        resetPasswordHeader.shouldBe(Condition.visible).shouldHave(Condition.text(resetPasswordValue));
     }
     public void resetPasswordButtonIsDisplayed() {
         resetPasswordButton.shouldBe(Condition.visible);

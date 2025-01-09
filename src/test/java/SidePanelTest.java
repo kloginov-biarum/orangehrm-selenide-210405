@@ -149,7 +149,6 @@ public class SidePanelTest extends BaseTest{
         sidePanel.panelIsRolledOut();
         sidePanel.clickOnTheArrow();
         sidePanel.panelIsRolledIn();
-
     }
 
 

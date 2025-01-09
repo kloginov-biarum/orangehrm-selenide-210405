@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.devtools.v85.log.Log;
@@ -32,11 +33,9 @@ public class LoginTest extends BaseTest{
 
     @Test
     public void successLoginWithPO(){
-        LoginPage loginPage = new LoginPage();
         loginPage.enterUsername("Admin");
         loginPage.enterPassword("admin123");
         loginPage.clickOnLoginButton();
-        DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.checkHeader("Dashboard");
     }
 
@@ -136,6 +135,7 @@ public class LoginTest extends BaseTest{
         LoginPage loginPage = new LoginPage();
         loginPage.logoIsDisplayed();
         loginPage.logoIsCorrect();
+        System.out.println(WebDriverRunner.getWebDriver().getCurrentUrl());
     }
 
 }

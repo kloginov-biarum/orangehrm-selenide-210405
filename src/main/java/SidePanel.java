@@ -34,7 +34,7 @@ public class SidePanel {
         leaveLink.click();
     }
     public void amountOfLinksEquals(int expectedValue){
-        links.shouldHave(size(expectedValue));
+        links.filter(Condition.visible).shouldHave(size(expectedValue));
     }
 
     public void amountOfLinksIconsEquals(int expectedValue){
@@ -70,7 +70,7 @@ public class SidePanel {
     }
 
     public void panelIsRolledOut(){
-        wholeSidePanel.shouldHave(Condition.attributeMatching("class",".*toggled.*"));
+        wholeSidePanel.shouldNotHave(Condition.attributeMatching("class",".*toggled.*"));
     }
 
     public void panelIsRolledIn(){

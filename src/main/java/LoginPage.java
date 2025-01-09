@@ -6,7 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
 
@@ -81,7 +83,7 @@ public class LoginPage {
         linkLinkedin.click();
     }
 
-    private SelenideElement logo = $ ("[alt=\"company-branding\"]");
+    private SelenideElement logo = $(byAttribute("alt","company-branding"));
 
     public void logoIsDisplayed() {
         logo.shouldBe(visible, Duration.ofSeconds(10));
